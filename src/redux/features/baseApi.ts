@@ -1,15 +1,15 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-// https://crm-api-indol.vercel.app/api/v1
+// https://eprofile-api.vercel.app
 // http://localhost:5000/api/v1
 // Define a service using a base URL and expected endpoints
 const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://crm-api-indol.vercel.app/api/v1",
+    baseUrl: "https://eprofile-api.vercel.app/api/v1",
     credentials: "include",
   }),
-  tagTypes: ["User", "Customer", "Project", "Task", "Expense"],
+  tagTypes: ["User", "Company", "Profile"],
   endpoints: () => ({}),
 });
 
