@@ -1,17 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "../layout/RootLayout";
-import AddCustomer from "../pages/Customer/AddCustomer";
-import CustomerDetails from "../pages/Customer/CustomerDetails";
-import ManageCustomer from "../pages/Customer/ManageCustomer";
-import AddExpense from "../pages/Expense/AddExpense";
-import ManageExpense from "../pages/Expense/ManageExpense";
+import AllCompany from "../pages/Company/AllCompany";
+import PendingCompany from "../pages/Company/PendingCompany";
+import PublishedCompany from "../pages/Company/PublishedCompany";
 import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
-import AddProject from "../pages/Project/AddProject";
-import ManageProjects from "../pages/Project/ManageProjects";
+import AllProfile from "../pages/Profile/AllProfile";
+import PendingProfile from "../pages/Profile/PendingProfile";
+import PublishedProfile from "../pages/Profile/PublishedProfile";
 import SigninPage from "../pages/SigninPage";
-import AddTask from "../pages/Task/AddTask";
-import ManageTasks from "../pages/Task/ManageTasks";
 import AddUser from "../pages/User/AddUser";
 import ManageUsers from "../pages/User/ManageUsers";
 import PrivateRoute from "./PrivateRoute";
@@ -57,52 +54,52 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/project/add-project",
-        element: <AddProject />,
+        path: "/company/pending-company",
+        element: (
+          <ProtectByRole role="Admin">
+            <PendingCompany />
+          </ProtectByRole>
+        ),
       },
       {
-        path: "/project/manage-project",
-        element: <ManageProjects />,
+        path: "/company/published-company",
+        element: (
+          <ProtectByRole role="Admin">
+            <PublishedCompany />
+          </ProtectByRole>
+        ),
       },
       {
-        path: "/update-project/:id",
-        element: <AddProject />,
+        path: "/company/all-company",
+        element: (
+          <ProtectByRole role="Admin">
+            <AllCompany />
+          </ProtectByRole>
+        ),
       },
       {
-        path: "/customer/add-customer",
-        element: <AddCustomer />,
+        path: "/profile/pending-profile",
+        element: (
+          <ProtectByRole role="Admin">
+            <PendingProfile />
+          </ProtectByRole>
+        ),
       },
       {
-        path: "/customer/manage-customer",
-        element: <ManageCustomer />,
+        path: "/profile/published-profile",
+        element: (
+          <ProtectByRole role="Admin">
+            <PublishedProfile />
+          </ProtectByRole>
+        ),
       },
       {
-        path: "/customer-details/:customerId",
-        element: <CustomerDetails />,
-      },
-      {
-        path: "/update-customer/:id",
-        element: <AddCustomer />,
-      },
-      {
-        path: "/task/add-task",
-        element: <AddTask />,
-      },
-      {
-        path: "/task/manage-task",
-        element: <ManageTasks />,
-      },
-      {
-        path: "/expenses/add-expenses",
-        element: <AddExpense />,
-      },
-      {
-        path: "/expenses/manage-expenses",
-        element: <ManageExpense />,
-      },
-      {
-        path: "update-expense/:id",
-        element: <AddExpense />,
+        path: "/profile/all-profile",
+        element: (
+          <ProtectByRole role="Admin">
+            <AllProfile />
+          </ProtectByRole>
+        ),
       },
     ],
   },
