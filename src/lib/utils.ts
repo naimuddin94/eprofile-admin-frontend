@@ -1,10 +1,7 @@
-import { CiUser } from "react-icons/ci";
 import { FaUserGraduate } from "react-icons/fa";
 import { IoSettingsOutline } from "react-icons/io5";
 import { LuLayoutDashboard } from "react-icons/lu";
-
 import { MdOutlineWorkHistory, MdWorkHistory } from "react-icons/md";
-import { PiNotepad } from "react-icons/pi";
 import { SlNotebook } from "react-icons/sl";
 import { VscGraphLine } from "react-icons/vsc";
 import Swal from "sweetalert2";
@@ -18,24 +15,22 @@ export const navigation = [
     child: ["Add User", "Manage Users"],
   },
   {
-    name: "Project",
+    name: "Company",
     icon: { name: MdOutlineWorkHistory, size: 22 },
-    child: ["Add Project", "Manage Project"],
+    child: [
+      "Pending Company",
+      "Published Company",
+      "All Company",
+    ],
   },
   {
-    name: "Customer",
-    icon: { name: CiUser, size: 24 },
-    child: ["Add Customer", "Manage Customer"],
-  },
-  {
-    name: "Task",
+    name: "Profile",
     icon: { name: SlNotebook, size: 20 },
-    child: ["Add Task", "Manage Task"],
-  },
-  {
-    name: "Expenses",
-    icon: { name: PiNotepad, size: 24 },
-    child: ["Add Expenses", "Manage Expenses"],
+    child: [
+      "Pending Profile",
+      "Published Profile",
+      "All Profile",
+    ],
   },
   // {
   //   name: "Reports",
