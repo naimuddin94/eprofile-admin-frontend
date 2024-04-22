@@ -18,7 +18,7 @@ const SigninPage = () => {
     const password = form.password.value;
     loginFn({ email, password }).then((res: any) => {
       if (res.data) {
-        dispatch(login(res.data.user));
+        dispatch(login(res?.data?.data?.user));
         navigate("/");
       }
     });
