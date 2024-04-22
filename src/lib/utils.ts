@@ -5,7 +5,6 @@ import { MdOutlineWorkHistory, MdWorkHistory } from "react-icons/md";
 import { SlNotebook } from "react-icons/sl";
 import { VscGraphLine } from "react-icons/vsc";
 import Swal from "sweetalert2";
-import { ICustomer, IProject } from "../types/type";
 
 export const navigation = [
   { name: "Dashboard", icon: { name: LuLayoutDashboard, size: 20 } },
@@ -17,20 +16,12 @@ export const navigation = [
   {
     name: "Company",
     icon: { name: MdOutlineWorkHistory, size: 22 },
-    child: [
-      "Pending Company",
-      "Published Company",
-      "All Company",
-    ],
+    child: ["Pending Company", "Published Company", "All Company"],
   },
   {
     name: "Profile",
     icon: { name: SlNotebook, size: 20 },
-    child: [
-      "Pending Profile",
-      "Published Profile",
-      "All Profile",
-    ],
+    child: ["Pending Profile", "Published Profile", "All Profile"],
   },
   // {
   //   name: "Reports",
@@ -121,27 +112,23 @@ export const handleDelete = (
     confirmButtonText: "Yes, delete it!",
   }).then(async (result) => {
     if (result.isConfirmed) {
-      await deleteFn(id).then(() => {
-        Swal.fire({
-          title: "Deleted!",
-          text: "Deleted successfully",
-          icon: "success",
-        });
+      await deleteFn(id).then((res) => {
+        if (!res.error) {
+          Swal.fire({
+            title: "Deleted!",
+            text: "Deleted successfully",
+            icon: "success",
+          });
+        } else {
+          Swal.fire({
+            title: "Error!",
+            text: res?.error?.data?.message,
+            icon: "error",
+          });
+        }
       });
     }
   });
-};
-
-// get customer name
-export const handleCustomerName = (id: string, customers: ICustomer[]) => {
-  const customer = customers?.find((customer) => customer._id === id);
-  return `${customer?.first_name} ${customer?.last_name}`;
-};
-
-// get project name from id
-export const handleProjectName = (projectId: string, projects: IProject[]) => {
-  const project = projects?.find((project) => project._id === projectId);
-  return project?.project_title;
 };
 
 // date initial range
@@ -152,19 +139,3 @@ export const initialRange = [
     key: "selection",
   },
 ];
-
-// create customer options for select field
-export const customersOption = (customers: ICustomer[]) => {
-  return customers?.map((customer) => ({
-    id: customer._id,
-    name: `${customer.first_name} ${customer.last_name}`,
-  }));
-};
-
-// create project options for select field
-export const projectOptions = (projects: IProject[]) => {
-  return projects.map((project) => ({
-    id: project._id,
-    name: project.project_title,
-  }));
-};
