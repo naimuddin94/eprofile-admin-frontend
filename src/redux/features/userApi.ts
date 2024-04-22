@@ -1,9 +1,9 @@
-import { IUser } from "../../types/type";
+import { FetchUserResponse, IUser } from "../../types/type";
 import baseApi from "./baseApi";
 
 const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getUsers: builder.query<IUser[], string>({
+    getUsers: builder.query<FetchUserResponse, string>({
       query: () => "/users",
       providesTags: ["User"],
     }),
