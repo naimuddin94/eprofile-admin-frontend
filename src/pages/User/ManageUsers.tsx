@@ -1,22 +1,24 @@
+import moment from "moment";
 import { useState } from "react";
 import { FaEdit } from "react-icons/fa";
 import { LuView } from "react-icons/lu";
 import { Link } from "react-router-dom";
-import { IUser } from "../../types/type";
 import Error from "../../components/Utility/Error";
 import Loader from "../../components/Utility/Loader";
+import { handleDelete } from "../../lib/utils";
 import {
   useDeleteUserMutation,
   useGetUsersQuery,
 } from "../../redux/features/userApi";
+import { IUser } from "../../types/type";
 import UserDetailsModal from "./UserDetailsModal";
-import { handleDelete } from "../../lib/utils";
 
 const ManageUsers = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState<IUser | null>(null);
 
-  const { data: users = [], isLoading, error } = useGetUsersQuery("Users");
+  const { data, isLoading, error } = useGetUsersQuery("Users");
+
   const [deleteUserFn] = useDeleteUserMutation();
 
   // for view user model
@@ -47,7 +49,7 @@ const ManageUsers = () => {
                   Email
                 </th>
                 <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-5">
-                  Contact Information
+                  Date of Birth
                 </th>
                 <th className="py-4 px-4 font-medium text-black dark:text-white xl:pl-5">
                   Role
@@ -58,8 +60,8 @@ const ManageUsers = () => {
               </tr>
             </thead>
             <tbody>
-              {users &&
-                users.map((user) => (
+              {data?.data &&
+                data?.data?.map((user) => (
                   <tr key={user._id}>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <p className="text-black dark:text-white">
@@ -71,11 +73,11 @@ const ManageUsers = () => {
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <p className="text-black dark:text-white">
-                        {user.phone_number}
+                        {moment(user.date_of_birth).format("DD-MM-YYYY")}
                       </p>
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                      <p className="text-black dark:text-white">{`${user.role[0].toUpperCase() + user.role.slice(1)}`}</p>
+                      <p className="text-black dark:text-white">{user.role}</p>
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <div className="flex items-center">
