@@ -130,9 +130,11 @@ const AddUser = () => {
                 icon={<PiCrownDuotone size={22} />}
               />
             </div>
-            <div className="md:max-w-[50%] pr-5">
-              <Input label="Password" register={register} />
-            </div>
+            {!params?.id && (
+              <div className="md:max-w-[50%] pr-5">
+                <Input label="Password" register={register} />
+              </div>
+            )}
             <Button type="submit">
               {isSubmitting ? (
                 <FidgetSpinner
