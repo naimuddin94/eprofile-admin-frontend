@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink, useLocation } from "react-router-dom";
-import Logo from "../../images/logo/softronixs.png";
+import Logo from "/eprofileLogo2.jpg";
 import { navigation } from "../../lib/utils";
 import { RootState } from "../../redux/store/store";
 import Loader from "../Utility/Loader";
