@@ -42,14 +42,17 @@ const ManageUsers = () => {
           <table className="w-full table-auto">
             <thead>
               <tr className="bg-gray-2 text-left dark:bg-meta-4">
-                <th className="min-w-[170px] py-4 px-4 font-medium text-black dark:text-white xl:pl-6">
+                <th className="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white xl:pl-6">
                   Full Name
                 </th>
-                <th className="min-w-[150px] py-4 px-4 font-medium text-black dark:text-white">
+                <th className="min-w-[140px] py-4 px-4 font-medium text-black dark:text-white">
                   Email
                 </th>
-                <th className="min-w-[220px] py-4 px-4 font-medium text-black dark:text-white xl:pl-5">
+                <th className="min-w-[130px] py-4 px-4 font-medium text-black dark:text-white xl:pl-5">
                   Date of Birth
+                </th>
+                <th className="min-w-[130px] py-4 px-4 font-medium text-black dark:text-white xl:pl-5">
+                  Country
                 </th>
                 <th className="py-4 px-4 font-medium text-black dark:text-white xl:pl-5">
                   Role
@@ -77,8 +80,14 @@ const ManageUsers = () => {
                       </p>
                     </td>
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
+                      <p className="text-black dark:text-white">
+                        {user.country}
+                      </p>
+                    </td>
+                    <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <p className="text-black dark:text-white">{user.role}</p>
                     </td>
+
                     <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                       <div className="flex items-center">
                         <Link to={`/update-user/${user._id}`}>
