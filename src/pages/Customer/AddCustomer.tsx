@@ -35,7 +35,7 @@ interface AddCustomerInput {
 }
 
 const AddCustomer = () => {
-  const {
+const {
     register,
     handleSubmit,
     reset,
