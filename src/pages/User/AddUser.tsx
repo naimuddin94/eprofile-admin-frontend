@@ -107,18 +107,18 @@ const AddUser = () => {
               <Input
                 label="Country"
                 register={register}
-                defaultValue={params?.id ? user?.phone_number.toString() : ""}
+                defaultValue={params?.id ? user?.country : ""}
               />
             </div>
             <div className="input-group">
               <Input
-                label="Marriage Date"
+                label="Date Of Birth"
                 type="date"
                 register={register}
                 required={false}
                 defaultValue={
                   params?.id
-                    ? moment(user?.marriage_date).format("YYYY-MM-DD")
+                    ? moment(user?.date_of_birth).format("YYYY-MM-DD")
                     : ""
                 }
               />
