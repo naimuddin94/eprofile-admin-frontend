@@ -30,7 +30,10 @@ const AddUser = () => {
   const navigate = useNavigate();
 
   // get single user from redux store
-  const { data: user, isLoading } = useGetSingleUserQuery(params.id as string);
+  const { data, isLoading } = useGetSingleUserQuery(params.id as string);
+
+  console.log(data?.data);
+
 
   // form reset when add new user
   useEffect(() => {
@@ -90,24 +93,24 @@ const AddUser = () => {
               <Input
                 label="First Name"
                 register={register}
-                defaultValue={params?.id ? user?.first_name : ""}
+                defaultValue={params?.id ? data?.data?.first_name : ""}
               />
               <Input
                 label="Last Name"
                 register={register}
-                defaultValue={params?.id ? user?.last_name : ""}
+                defaultValue={params?.id ? data?.data?.last_name : ""}
               />
             </div>
             <div className="input-group">
               <Input
                 label="Email"
                 register={register}
-                defaultValue={params?.id ? user?.email : ""}
+                defaultValue={params?.id ? data?.data?.email : ""}
               />
               <Input
                 label="Country"
                 register={register}
-                defaultValue={params?.id ? user?.country : ""}
+                defaultValue={params?.id ? data?.data?.country : ""}
               />
             </div>
             <div className="input-group">
@@ -118,14 +121,14 @@ const AddUser = () => {
                 required={false}
                 defaultValue={
                   params?.id
-                    ? moment(user?.date_of_birth).format("YYYY-MM-DD")
+                    ? moment(data?.data?.date_of_birth).format("YYYY-MM-DD")
                     : ""
                 }
               />
               <Select
                 label="Role"
                 options={["Admin", "Basic"]}
-                defaultValue={params.id ? user?.role : ""}
+                defaultValue={params.id ? data?.data?.role : ""}
                 register={register}
                 icon={<PiCrownDuotone size={22} />}
               />
