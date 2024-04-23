@@ -1,13 +1,21 @@
-import { FetchUserResponse, IUser } from "../../types/type";
+import { FetchUserResponse, FetchUsersResponse, IUser } from "../../types/type";
 import baseApi from "./baseApi";
 
 const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getUsers: builder.query<FetchUserResponse, string>({
+    getUsers: builder.query<FetchUsersResponse, string>({
       query: () => "/users",
-      providesTags: ["User"],
+      providesTags: (result) => {
+        if (result?.data) {
+          return [
+            "User",
+            ...result.data.map(({ _id }) => ({ type: "User" as const, _id })),
+          ];
+        }
+        return [{ type: "User" as const }];
+      },
     }),
-    getSingleUser: builder.query<IUser, string>({
+    getSingleUser: builder.query<FetchUserResponse, string>({
       query: (id) => `/users/${id}`,
     }),
     deleteUser: builder.mutation<void, string>({
