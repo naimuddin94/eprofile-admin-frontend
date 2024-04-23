@@ -19,7 +19,7 @@ const userApi = baseApi.injectEndpoints({
     }),
     createUser: builder.mutation<IUser, Partial<IUser>>({
       query: (newUser) => ({
-        url: "/users",
+        url: "/users/admin/create",
         method: "POST",
         body: newUser,
       }),
