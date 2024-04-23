@@ -15,10 +15,16 @@ export interface IUser extends AddUserInput {
   _id: string;
 }
 
-export interface FetchUserResponse {
+export interface FetchUsersResponse {
   statusCode: number;
   message: string;
   data: IUser[];
+}
+
+export interface FetchUserResponse {
+  statusCode: number;
+  message: string;
+  data: IUser;
 }
 
 export interface ISelectGroupProps {
