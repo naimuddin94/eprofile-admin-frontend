@@ -17,7 +17,7 @@ const ManageUsers = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedUser, setSelectedUser] = useState<IUser | null>(null);
 
-  const { data, isLoading, error } = useGetUsersQuery("Users");
+  const { data, isLoading, error } = useGetUsersQuery("User");
 
   const [deleteUserFn] = useDeleteUserMutation();
 
