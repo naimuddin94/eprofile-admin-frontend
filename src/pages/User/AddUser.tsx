@@ -28,11 +28,9 @@ const AddUser = () => {
   const params = useParams();
   const { pathname } = useLocation();
   const navigate = useNavigate();
-
+  
   // get single user from redux store
   const { data, isLoading } = useGetSingleUserQuery(params.id as string);
-
-  console.log(data?.data);
 
 
   // form reset when add new user
