@@ -1,5 +1,3 @@
-import { ICustomerLedger } from "../types/type";
-
 export const expenses = [
   {
     _id: "328971566",
