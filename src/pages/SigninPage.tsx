@@ -1,4 +1,6 @@
 import { FormEvent } from "react";
+import useSignIn from "react-auth-kit/hooks/useSignIn";
+import toast from "react-hot-toast";
 import { FidgetSpinner } from "react-loader-spinner";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,6 +9,7 @@ import { useUserLoginMutation } from "../redux/features/authApi";
 import { login } from "../redux/features/authSlice";
 
 const SigninPage = () => {
+  const signIn = useSignIn();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [loginFn, { isLoading }] = useUserLoginMutation();
@@ -18,8 +21,21 @@ const SigninPage = () => {
     const password = form.password.value;
     loginFn({ email, password }).then((res: any) => {
       if (res.data) {
-        dispatch(login(res?.data?.data?.user));
-        navigate("/");
+        const { user, token } = res.data.data;
+        if (
+          signIn({
+            auth: {
+              token: token,
+              type: "Bearer",
+            },
+            userState: user,
+          })
+        ) {
+          dispatch(login(user));
+          navigate("/");
+        } else {
+          toast.error("Login failed");
+        }
       }
     });
   };
