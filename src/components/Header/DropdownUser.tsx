@@ -1,12 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-
+import useSignOut from "react-auth-kit/hooks/useSignOut";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import UserOne from "../../images/user/default_user.jpg";
 import { logout } from "../../redux/features/authSlice";
 import { RootState } from "../../redux/store/store";
 
 const DropdownUser = () => {
+  const signOut = useSignOut();
   const dispatch = useDispatch();
   const { user } = useSelector((state: RootState) => state.auth);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -42,6 +43,7 @@ const DropdownUser = () => {
 
   const handleLogout = async () => {
     dispatch(logout());
+    signOut();
   };
 
   return (
