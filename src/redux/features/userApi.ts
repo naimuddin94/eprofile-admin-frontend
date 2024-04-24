@@ -8,7 +8,7 @@ import baseApi from "./baseApi";
 
 const userApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getUsers: builder.query<FetchUsersResponse, undefined>({
+    getUsers: builder.query<FetchUsersResponse, string>({
       query: () => "/users",
       providesTags: (result) => {
         if (result?.data) {
