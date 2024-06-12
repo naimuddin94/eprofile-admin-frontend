@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 import { FidgetSpinner } from "react-loader-spinner";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import Logo from "../images/logo/softronixs.png";
+import Logo from "/eprofileLogo2.jpg";
 import { useUserLoginMutation } from "../redux/features/authApi";
 import { login } from "../redux/features/authSlice";
 
@@ -41,7 +41,7 @@ const SigninPage = () => {
   };
 
   return (
-    <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+    <div className="rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark min-h-screen">
       <div className="flex flex-wrap items-center">
         <div className="hidden w-full xl:block xl:w-1/2">
           <div className="py-0 px-26 text-center">
@@ -50,8 +50,8 @@ const SigninPage = () => {
             </Link>
 
             <p className="2xl:px-20">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit
-              suspendisse.
+              Unlock the gateway to comprehensive control with our Profile Build
+              Application Admin Login.
             </p>
 
             <span className="mt-15 inline-block">
