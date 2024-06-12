@@ -10,7 +10,7 @@ import "./css/style.css";
 import store from "./redux/store/store";
 
 const authStore = createStore({
-  authName: "_auth",
+  authName: "token",
   authType: "cookie",
   cookieDomain: window.location.hostname,
   cookieSecure: window.location.protocol === "https:",
